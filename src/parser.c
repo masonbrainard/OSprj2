@@ -89,6 +89,7 @@ enum parse_error parse_input(const char *input, struct command **pipeline_out)
 				goto fail;
 			}
 			cmd.output_type = COMMAND_OUTPUT_FILE_APPEND;
+			continue;
 		} else if (consume_string(&input, ">")) {
 			if (cmd.output_type) {
 				rv = PARSE_ERR_MULTIPLE_OUTPUTS;
@@ -100,6 +101,7 @@ enum parse_error parse_input(const char *input, struct command **pipeline_out)
 				goto fail;
 			}
 			cmd.output_type = COMMAND_OUTPUT_FILE_TRUNCATE;
+			continue;
 		} else if (consume_string(&input, "<")) {
 			if (cmd.input_filename) {
 				rv = PARSE_ERR_MULTIPLE_INPUTS;
@@ -111,6 +113,7 @@ enum parse_error parse_input(const char *input, struct command **pipeline_out)
 				rv = PARSE_ERR_MISSING_ARG_TO_FILE_OP;
 				goto fail;
 			}
+			continue;
 		} else if (consume_string(&input, "|")) {
 			if (cmd.output_type) {
 				rv = PARSE_ERR_MULTIPLE_OUTPUTS;
