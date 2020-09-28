@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+
+#include <sys/wait.h>
 
 #include "dispatcher.h"
 #include "shell_builtins.h"
@@ -26,6 +29,23 @@
  */
 static int dispatch_external_command(struct command *pipeline)
 {
+	int status = 0;
+	pid_t pid = fork();
+	
+	if	(pid == -1) {
+		exit(EXIT_FAILURE); //bad things have happened
+	}
+	else if (pid > 0) //parent 
+	{
+		waitpid(pid, &status, 0);
+	}
+	else //child
+	{
+		status = execvp(pipeline->argv[0], pipeline->argv);
+		fprintf(stderr, "%s: Command not found\n", pipeline->argv[0]);
+	}
+	return status;
+	
 	/*
 	 * Note: this is where you'll start implementing the project.
 	 *
@@ -50,8 +70,7 @@ static int dispatch_external_command(struct command *pipeline)
 	 *
 	 * Good luck!
 	 */
-	fprintf(stderr, "TODO: handle external commands\n");
-	return -1;
+	
 }
 
 /**
