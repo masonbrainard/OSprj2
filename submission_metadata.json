@@ -1,0 +1,55 @@
+{
+  "deliverables": {
+    "d1-submission": {
+      "resubmission-detected": false,
+      "slip-days-spent": 2,
+      "base-checks": [
+        {
+          "warnings": [],
+          "name": "InGitRepo"
+        },
+        {
+          "warnings": [
+            "You are not running this script on the Isengard server.\n\nPlease be sure that your code compiles and runs properly on Isengard."
+          ],
+          "name": "RunningOnIsengard"
+        },
+        {
+          "warnings": [
+            "You have untracked files:\n\nexpectedfail.c\nexpectfail\nhelloworld\ntest.c\ntest.txt\n\nThese files will not be included in your submission unless you commit them."
+          ],
+          "name": "UntrackedFiles"
+        },
+        {
+          "warnings": [],
+          "name": "UncommittedFiles"
+        },
+        {
+          "warnings": [],
+          "name": "ExecutableNotInGit"
+        },
+        {
+          "warnings": [],
+          "name": "CodeCompiles"
+        },
+        {
+          "warnings": [
+            "You have style errors.  Points may be deducted for poor style.\n\nSee the Linux Kernel Style Guide for reference, the required style\nguide for this course:\nhttps://www.kernel.org/doc/html/v5.8/process/coding-style.html\n\nCheckpatch output:\n> ----------------\n> include/common.h\n> ----------------\n> total: 0 errors, 0 warnings, 26 lines checked\n> \n> include/common.h has no obvious style problems and is ready for submission.\n> --------------------\n> include/dispatcher.h\n> --------------------\n> total: 0 errors, 0 warnings, 20 lines checked\n> \n> include/dispatcher.h has no obvious style problems and is ready for submission.\n> ------------------\n> include/interact.h\n> ------------------\n> total: 0 errors, 0 warnings, 40 lines checked\n> \n> include/interact.h has no obvious style problems and is ready for submission.\n> ----------------\n> include/parser.h\n> ----------------\n> total: 0 errors, 0 warnings, 102 lines checked\n> \n> include/parser.h has no obvious style problems and is ready for submission.\n> ------------------------\n> include/shell_builtins.h\n> ------------------------\n> total: 0 errors, 0 warnings, 23 lines checked\n> \n> include/shell_builtins.h has no obvious style problems and is ready for submission.\n> -----------------\n> mains/parseview.c\n> -----------------\n> total: 0 errors, 0 warnings, 129 lines checked\n> \n> mains/parseview.c has no obvious style problems and is ready for submission.\n> -------------\n> mains/shell.c\n> -------------\n> total: 0 errors, 0 warnings, 7 lines checked\n> \n> mains/shell.c has no obvious style problems and is ready for submission.\n> ----------------\n> src/dispatcher.c\n> ----------------\n> ERROR: trailing whitespace\n> #34: FILE: src/dispatcher.c:34:\n> +^I$\n> \n> ERROR: do not use C99 // comments\n> #36: FILE: src/dispatcher.c:36:\n> +\t\texit(EXIT_FAILURE); //bad things have happened\n> \n> ERROR: trailing whitespace\n> #38: FILE: src/dispatcher.c:38:\n> +^Ielse if (pid > 0) //parent $\n> \n> ERROR: that open brace { should be on the previous line\n> #38: FILE: src/dispatcher.c:38:\n> +\telse if (pid > 0) //parent \n> +\t{\n> \n> ERROR: do not use C99 // comments\n> #38: FILE: src/dispatcher.c:38:\n> +\telse if (pid > 0) //parent \n> \n> ERROR: trailing statements should be on next line\n> #38: FILE: src/dispatcher.c:38:\n> +\telse if (pid > 0) //parent \n> \n> ERROR: else should follow close brace '}'\n> #38: FILE: src/dispatcher.c:38:\n> +\t}\n> +\telse if (pid > 0) //parent \n> \n> ERROR: that open brace { should be on the previous line\n> #42: FILE: src/dispatcher.c:42:\n> +\telse //child\n> +\t{\n> \n> ERROR: do not use C99 // comments\n> #42: FILE: src/dispatcher.c:42:\n> +\telse //child\n> \n> ERROR: else should follow close brace '}'\n> #42: FILE: src/dispatcher.c:42:\n> +\t}\n> +\telse //child\n> \n> ERROR: trailing whitespace\n> #48: FILE: src/dispatcher.c:48:\n> +^I$\n> \n> ERROR: trailing whitespace\n> #73: FILE: src/dispatcher.c:73:\n> +^I$\n> \n> total: 12 errors, 0 warnings, 124 lines checked\n> \n> NOTE: Whitespace errors detected.\n>       You may wish to use scripts/cleanpatch or scripts/cleanfile\n> \n> src/dispatcher.c has style problems, please review.\n> --------------\n> src/interact.c\n> --------------\n> total: 0 errors, 0 warnings, 115 lines checked\n> \n> src/interact.c has no obvious style problems and is ready for submission.\n> ------------\n> src/parser.c\n> ------------\n> total: 0 errors, 0 warnings, 183 lines checked\n> \n> src/parser.c has no obvious style problems and is ready for submission.\n> --------------------\n> src/shell_builtins.c\n> --------------------\n> total: 0 errors, 0 warnings, 88 lines checked\n> \n> src/shell_builtins.c has no obvious style problems and is ready for submission.\n> \n> NOTE: Ignored message types: C99_COMMENT_TOLERANCE CONST_STRUCT EMBEDDED_FUNCTION_NAME FILE_PATH_CHANGES SPDX_LICENSE_TAG SPLIT_STRING SSCANF_TO_KSTRTO\n> \n> NOTE: If any of the errors are false positives, please report\n>       them to the maintainer, see CHECKPATCH in MAINTAINERS.\n\nNote: you may be able to correct trivial indentation errors using\nclang-format.  Example:\n\n$ clang-format -i include/common.h include/dispatcher.h include/interact.h include/parser.h include/shell_builtins.h mains/parseview.c mains/shell.c src/dispatcher.c src/interact.c src/parser.c src/shell_builtins.c\n$ git commit -am \"Ran clang-format\""
+          ],
+          "name": "LinuxKernelStyle"
+        }
+      ],
+      "hostname": "bb136-20.mines.edu",
+      "calc-slip-days": 2,
+      "local-timestamp": 1601254360,
+      "local-due-date": 1601099999,
+      "deliverable-specific-checks": [],
+      "carried-slip-days": 0
+    }
+  },
+  "author-info": {
+    "username": "masonbrainard",
+    "full-name": "Mason Brainard",
+    "cwid": "10740921"
+  }
+}
