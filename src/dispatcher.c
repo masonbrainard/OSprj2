@@ -136,7 +136,7 @@ int runcmd(struct command *pipeline, int prev_pipe[2], int std_cp[2])
 		}
 	}
 
-	if (pipeline->pipe_to != NULL) {
+	if (pipeline->output_type == COMMAND_OUTPUT_PIPE) {
 		status = runcmd(pipeline->pipe_to, pipeRW, std_cp);
 	}
 	
