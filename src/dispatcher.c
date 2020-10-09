@@ -81,13 +81,11 @@ int runcmd(struct command *pipeline, int prev_pipe[2], int std_cp[2])
 				"Error opening output file to append.\n");
 			return 1;
 		}
-		/*
 		if(dup2(outputfile, STDOUT_FILENO) == -1)
 		{
 			fprintf(stderr, "dup2 failed from Append.\n");
 			return 1;
-		}*/
-		dup2(outputfile, STDOUT_FILENO);
+		}
 	} else if (pipeline->output_type == COMMAND_OUTPUT_FILE_TRUNCATE) {
 		int truncate = O_WRONLY | O_TRUNC | O_CREAT;
 		if ((outputfile = open(pipeline->output_filename, truncate,
