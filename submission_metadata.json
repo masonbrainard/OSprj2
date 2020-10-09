@@ -1,7 +1,58 @@
 {
   "deliverables": {
-    "d1-submission": {
+    "d2-submission": {
       "resubmission-detected": false,
+      "slip-days-spent": 1,
+      "base-checks": [
+        {
+          "warnings": [],
+          "name": "InGitRepo"
+        },
+        {
+          "warnings": [
+            "You are not running this script on the Isengard server.\n\nPlease be sure that your code compiles and runs properly on Isengard."
+          ],
+          "name": "RunningOnIsengard"
+        },
+        {
+          "warnings": [
+            "You have untracked files:\n\n.nfs000000000cda4cd9000002c1\nexpectedfail.c\nexpectfail\nhelloworld\nlist.txt\nresult.txt\ntest.c\ntest.txt\ntest2.c\ntest2.txt\n\nThese files will not be included in your submission unless you commit them."
+          ],
+          "name": "UntrackedFiles"
+        },
+        {
+          "warnings": [],
+          "name": "UncommittedFiles"
+        },
+        {
+          "warnings": [],
+          "name": "ExecutableNotInGit"
+        },
+        {
+          "warnings": [],
+          "name": "CodeCompiles"
+        },
+        {
+          "warnings": [
+            "You have style errors.  Points may be deducted for poor style.\n\nSee the Linux Kernel Style Guide for reference, the required style\nguide for this course:\nhttps://www.kernel.org/doc/html/v5.8/process/coding-style.html\n\nCheckpatch output:\n> ----------------\n> include/common.h\n> ----------------\n> total: 0 errors, 0 warnings, 26 lines checked\n> \n> include/common.h has no obvious style problems and is ready for submission.\n> --------------------\n> include/dispatcher.h\n> --------------------\n> total: 0 errors, 0 warnings, 20 lines checked\n> \n> include/dispatcher.h has no obvious style problems and is ready for submission.\n> ------------------\n> include/interact.h\n> ------------------\n> total: 0 errors, 0 warnings, 40 lines checked\n> \n> include/interact.h has no obvious style problems and is ready for submission.\n> ----------------\n> include/parser.h\n> ----------------\n> total: 0 errors, 0 warnings, 102 lines checked\n> \n> include/parser.h has no obvious style problems and is ready for submission.\n> ------------------------\n> include/shell_builtins.h\n> ------------------------\n> total: 0 errors, 0 warnings, 23 lines checked\n> \n> include/shell_builtins.h has no obvious style problems and is ready for submission.\n> -----------------\n> mains/parseview.c\n> -----------------\n> total: 0 errors, 0 warnings, 129 lines checked\n> \n> mains/parseview.c has no obvious style problems and is ready for submission.\n> -------------\n> mains/shell.c\n> -------------\n> total: 0 errors, 0 warnings, 7 lines checked\n> \n> mains/shell.c has no obvious style problems and is ready for submission.\n> ----------------\n> src/dispatcher.c\n> ----------------\n> WARNING: externs should be avoided in .c files\n> #15: FILE: src/dispatcher.c:15:\n> +int runcmd(struct command *pipeline, int prev_pipe[2], int stdout_cp[2]);\n> \n> ERROR: do not use C99 // comments\n> #41: FILE: src/dispatcher.c:41:\n> +\t//reassert stdout and stdin if they were changed\n> \n> ERROR: do not use C99 // comments\n> #54: FILE: src/dispatcher.c:54:\n> +\t//laying pipe\n> \n> WARNING: Missing a blank line after declarations\n> #56: FILE: src/dispatcher.c:56:\n> +\tint pipeRW[2];\n> +\tif (pipe(pipeRW) == -1) {\n> \n> ERROR: do not use C99 // comments\n> #61: FILE: src/dispatcher.c:61:\n> +\t//if input_file change\n> \n> ERROR: do not use assignment in if condition\n> #63: FILE: src/dispatcher.c:63:\n> +\t\tif ((inputfile = open(pipeline->input_filename, O_RDONLY,\n> \n> WARNING: Symbolic permissions 'S_IRUSR' are not preferred. Consider using octal permissions '0400'.\n> #64: FILE: src/dispatcher.c:64:\n> +\t\t\t\t      S_IRUSR)) == -1) {\n> \n> ERROR: do not use C99 // comments\n> #73: FILE: src/dispatcher.c:73:\n> +\t//check output_type\n> \n> WARNING: Missing a blank line after declarations\n> #78: FILE: src/dispatcher.c:78:\n> +\t\tint append = O_WRONLY | O_APPEND;\n> +\t\tif ((outputfile = open(pipeline->output_filename, append,\n> \n> ERROR: do not use assignment in if condition\n> #78: FILE: src/dispatcher.c:78:\n> +\t\tif ((outputfile = open(pipeline->output_filename, append,\n> \n> WARNING: Symbolic permissions 'S_IWUSR' are not preferred. Consider using octal permissions '0200'.\n> #79: FILE: src/dispatcher.c:79:\n> +\t\t\t\t       S_IWUSR)) == -1) {\n> \n> ERROR: that open brace { should be on the previous line\n> #84: FILE: src/dispatcher.c:84:\n> +\t\tif(dup2(outputfile, STDOUT_FILENO) == -1)\n> +\t\t{\n> \n> ERROR: space required before the open parenthesis '('\n> #84: FILE: src/dispatcher.c:84:\n> +\t\tif(dup2(outputfile, STDOUT_FILENO) == -1)\n> \n> WARNING: Missing a blank line after declarations\n> #91: FILE: src/dispatcher.c:91:\n> +\t\tint truncate = O_WRONLY | O_TRUNC | O_CREAT;\n> +\t\tif ((outputfile = open(pipeline->output_filename, truncate,\n> \n> ERROR: do not use assignment in if condition\n> #91: FILE: src/dispatcher.c:91:\n> +\t\tif ((outputfile = open(pipeline->output_filename, truncate,\n> \n> WARNING: Symbolic permissions 'S_IWUSR' are not preferred. Consider using octal permissions '0200'.\n> #92: FILE: src/dispatcher.c:92:\n> +\t\t\t\t       S_IWUSR)) == -1) {\n> \n> ERROR: do not use C99 // comments\n> #105: FILE: src/dispatcher.c:105:\n> +\t//fork\n> \n> WARNING: Missing a blank line after declarations\n> #107: FILE: src/dispatcher.c:107:\n> +\tpid_t pid;\n> +\tif ((pid = fork()) == -1) {\n> \n> ERROR: do not use assignment in if condition\n> #107: FILE: src/dispatcher.c:107:\n> +\tif ((pid = fork()) == -1) {\n> \n> ERROR: that open brace { should be on the previous line\n> #110: FILE: src/dispatcher.c:110:\n> +\t} else if (pid == 0) //child\n> +\t{\n> \n> ERROR: do not use C99 // comments\n> #110: FILE: src/dispatcher.c:110:\n> +\t} else if (pid == 0) //child\n> \n> ERROR: trailing statements should be on next line\n> #110: FILE: src/dispatcher.c:110:\n> +\t} else if (pid == 0) //child\n> \n> ERROR: do not use C99 // comments\n> #112: FILE: src/dispatcher.c:112:\n> +\t\tclose(pipeRW[0]); //close read end of pipe\n> \n> ERROR: that open brace { should be on the previous line\n> #116: FILE: src/dispatcher.c:116:\n> +\t} else //parent\n> +\t{\n> \n> ERROR: do not use C99 // comments\n> #116: FILE: src/dispatcher.c:116:\n> +\t} else //parent\n> \n> ERROR: do not use C99 // comments\n> #118: FILE: src/dispatcher.c:118:\n> +\t\tclose(pipeRW[1]); //close write end of pipe\n> \n> ERROR: do not use C99 // comments\n> #120: FILE: src/dispatcher.c:120:\n> +\t\t//close input and output files\n> \n> WARNING: braces {} are not necessary for single statement blocks\n> #137: FILE: src/dispatcher.c:137:\n> +\tif (pipeline->output_type == COMMAND_OUTPUT_PIPE) {\n> +\t\tstatus = runcmd(pipeline->pipe_to, pipeRW, std_cp);\n> +\t}\n> \n> total: 19 errors, 9 warnings, 192 lines checked\n> \n> src/dispatcher.c has style problems, please review.\n> --------------\n> src/interact.c\n> --------------\n> total: 0 errors, 0 warnings, 115 lines checked\n> \n> src/interact.c has no obvious style problems and is ready for submission.\n> ------------\n> src/parser.c\n> ------------\n> total: 0 errors, 0 warnings, 183 lines checked\n> \n> src/parser.c has no obvious style problems and is ready for submission.\n> --------------------\n> src/shell_builtins.c\n> --------------------\n> total: 0 errors, 0 warnings, 88 lines checked\n> \n> src/shell_builtins.c has no obvious style problems and is ready for submission.\n> \n> NOTE: Ignored message types: C99_COMMENT_TOLERANCE CONST_STRUCT EMBEDDED_FUNCTION_NAME FILE_PATH_CHANGES SPDX_LICENSE_TAG SPLIT_STRING SSCANF_TO_KSTRTO\n> \n> NOTE: If any of the errors are false positives, please report\n>       them to the maintainer, see CHECKPATCH in MAINTAINERS.\n\nNote: you may be able to correct trivial indentation errors using\nclang-format.  Example:\n\n$ clang-format -i include/common.h include/dispatcher.h include/interact.h include/parser.h include/shell_builtins.h mains/parseview.c mains/shell.c src/dispatcher.c src/interact.c src/parser.c src/shell_builtins.c\n$ git commit -am \"Ran clang-format\""
+          ],
+          "name": "LinuxKernelStyle"
+        }
+      ],
+      "hostname": "bb136-21.mines.edu",
+      "calc-slip-days": 1,
+      "local-timestamp": 1602215237,
+      "local-due-date": 1601963999,
+      "deliverable-specific-checks": [],
+      "carried-slip-days": 2
+    },
+    "d1-submission": {
+      "carried-slip-days": 0,
+      "calc-slip-days": 2,
+      "local-timestamp": 1601254360,
+      "resubmission-detected": false,
+      "local-due-date": 1601099999,
+      "deliverable-specific-checks": [],
       "slip-days-spent": 2,
       "base-checks": [
         {
@@ -39,12 +90,7 @@
           "name": "LinuxKernelStyle"
         }
       ],
-      "hostname": "bb136-20.mines.edu",
-      "calc-slip-days": 2,
-      "local-timestamp": 1601254360,
-      "local-due-date": 1601099999,
-      "deliverable-specific-checks": [],
-      "carried-slip-days": 0
+      "hostname": "bb136-20.mines.edu"
     }
   },
   "author-info": {
