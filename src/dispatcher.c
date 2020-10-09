@@ -33,7 +33,7 @@ int runcmd(struct command *pipeline, int prev_pipe[2], int stdout_cp[2]);
  */
 static int dispatch_external_command(struct command *pipeline)
 {
-	int std_cpy[2] = {dup(STDOUT_FILENO), dup(STDIN_FILENO)};
+	int std_cpy[2] = { dup(STDOUT_FILENO), dup(STDIN_FILENO) };
 	int status = 0;
 
 	status = runcmd(pipeline, std_cpy, std_cpy);
@@ -60,7 +60,8 @@ int runcmd(struct command *pipeline, int prev_pipe[2], int std_cp[2])
 
 	//if input_file change
 	if (pipeline->input_filename != NULL) {
-		if ((inputfile = open(pipeline->input_filename, O_RDONLY, S_IRUSR)) == -1) {
+		if ((inputfile = open(pipeline->input_filename, O_RDONLY,
+				      S_IRUSR)) == -1) {
 			fprintf(stderr, "Error opening input file.\n");
 			return 1;
 		}
@@ -74,8 +75,10 @@ int runcmd(struct command *pipeline, int prev_pipe[2], int std_cp[2])
 		dup2(pipeRW[1], STDOUT_FILENO);
 	else if (pipeline->output_type == COMMAND_OUTPUT_FILE_APPEND) {
 		int append = O_WRONLY | O_APPEND;
-		if ((outputfile = open(pipeline->output_filename, append, S_IWUSR)) == -1) {
-			fprintf(stderr, "Error opening output file to append.\n");
+		if ((outputfile = open(pipeline->output_filename, append,
+				       S_IWUSR)) == -1) {
+			fprintf(stderr,
+				"Error opening output file to append.\n");
 			return 1;
 		}
 		/*
@@ -85,21 +88,19 @@ int runcmd(struct command *pipeline, int prev_pipe[2], int std_cp[2])
 			return 1;
 		}*/
 		dup2(outputfile, STDOUT_FILENO);
-	}
-	else if(pipeline->output_type == COMMAND_OUTPUT_FILE_TRUNCATE)
-	{
+	} else if (pipeline->output_type == COMMAND_OUTPUT_FILE_TRUNCATE) {
 		int truncate = O_WRONLY | O_TRUNC | O_CREAT;
-		if ((outputfile = open(pipeline->output_filename, truncate, S_IWUSR)) == -1) {
-			fprintf(stderr, "Error opening output file to create/truncate.\n");
+		if ((outputfile = open(pipeline->output_filename, truncate,
+				       S_IWUSR)) == -1) {
+			fprintf(stderr,
+				"Error opening output file to create/truncate.\n");
 			return 1;
 		}
-		if(dup2(outputfile, STDOUT_FILENO) == -1)
-		{
+		if (dup2(outputfile, STDOUT_FILENO) == -1) {
 			fprintf(stderr, "dup2 failed from Truncate.\n");
 			return 1;
 		}
-	}
-	else {
+	} else {
 		dup2(std_cp[1], STDOUT_FILENO);
 	}
 
@@ -108,8 +109,7 @@ int runcmd(struct command *pipeline, int prev_pipe[2], int std_cp[2])
 	if ((pid = fork()) == -1) {
 		fprintf(stderr, "Something is 'forking' wrong...\n");
 		return 1;
-	} 
-	else if (pid == 0) //child
+	} else if (pid == 0) //child
 	{
 		close(pipeRW[0]); //close read end of pipe
 		status = execvp(pipeline->argv[0], pipeline->argv);
@@ -122,14 +122,14 @@ int runcmd(struct command *pipeline, int prev_pipe[2], int std_cp[2])
 		//close input and output files
 		if (inputfile != 0) {
 			dup2(pipeRW[0], STDIN_FILENO);
-			if(close(inputfile) == -1){
+			if (close(inputfile) == -1) {
 				fprintf(stderr, "Error closing input file.\n");
 				return 1;
 			}
 		}
 		if (outputfile != 0) {
 			dup2(pipeRW[1], STDOUT_FILENO);
-			if(close(outputfile) == -1){
+			if (close(outputfile) == -1) {
 				fprintf(stderr, "Error closing output file.\n");
 				return 1;
 			}
@@ -139,7 +139,7 @@ int runcmd(struct command *pipeline, int prev_pipe[2], int std_cp[2])
 	if (pipeline->output_type == COMMAND_OUTPUT_PIPE) {
 		status = runcmd(pipeline->pipe_to, pipeRW, std_cp);
 	}
-	
+
 	return status;
 }
 

@@ -19,7 +19,7 @@ const char *parse_error_str[] = {
 	[PARSE_ERR_MULTIPLE_OUTPUTS] = "Command has multiple outputs",
 	[PARSE_ERR_MISSING_ARG_TO_FILE_OP] = "Missing operand to file operator",
 	[PARSE_ERR_TOO_MANY_ARGS] =
-	"The number of command line arguments is not supported by this shell",
+		"The number of command line arguments is not supported by this shell",
 };
 
 static char *sized_strdup(const char *base, size_t len)
